@@ -1,12 +1,15 @@
 import * as vscode from 'vscode';
+import { modelMapping } from './constants.js';
+import { generateResponse } from './template.js';
 
 class LlmModel {
-	model: string;
+	model: any;
 	apiKey: string;
 	public static instance: LlmModel;
 
 	private constructor(model: string, apiKey: string) {
-		this.model = model;
+		const ModelClass = modelMapping[model];
+		this.model = new ModelClass({model, apiKey});
 		this.apiKey = apiKey;
 	}
 
@@ -34,13 +37,10 @@ async function appendToEditor(editor: vscode.TextEditor, text: string) {
 }
 
 // Simulated streaming function (replace with LLM later)
-async function* sampleFn(input: string) {
-  yield `// Unit tests for file:\n// ${input.substring(0, 30)}...\n\n`;
-  yield "describe('add', () => {\n";
-  yield "  it('should add numbers', () => {\n";
-  yield "    expect(add(1,2)).toBe(3);\n";
-  yield "  });\n";
-  yield "});\n";
+async function* generateStream(input: any) {
+	for await(const chunk of input) {
+		yield chunk.content
+	}
 }
 
 function isConfigured() {
@@ -98,9 +98,6 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		}
 
-		const llm = LlmModel.getInstance();
-		console.log(llm.model, llm.apiKey);
-
 		const editor = vscode.window.activeTextEditor;
 		if(!editor) {
 			vscode.window.showErrorMessage('No active editor!');
@@ -108,8 +105,10 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 		const document = editor.document;
 		const fileContent = document.getText();
-
-		const stream = sampleFn(fileContent);
+		const llm = LlmModel.getInstance();
+		
+		const recievedResponse = await generateResponse(llm.model, fileContent);
+		const stream = generateStream(recievedResponse);
 
 		const currentFileUri = document.uri;
 
