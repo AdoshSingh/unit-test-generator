@@ -39,7 +39,7 @@
         "unitTestGen.llmModel": {
           "type": "string",
           "default": "gpt-4",
-          "enum": ["gpt-4"],
+          "enum": ["gpt-4", "gpt-3.5-turbo"],
           "enumDescriptions": ["OpenAI - GPT-4"],
           "description": "LLM model version used to generate tests"
         },
