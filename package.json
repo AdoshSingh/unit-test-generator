@@ -12,6 +12,7 @@
     "type": "git",
     "url": "https://github.com/AdoshSingh/unit-test-generator.git"
   },
+  "license": "MIT",
   "categories": [
     "Other"
   ],
