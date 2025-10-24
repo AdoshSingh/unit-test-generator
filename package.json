@@ -8,6 +8,10 @@
   "engines": {
     "vscode": "^1.104.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AdoshSingh/unit-test-generator.git"
+  },
   "categories": [
     "Other"
   ],
