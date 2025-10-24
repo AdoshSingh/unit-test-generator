@@ -1,11 +1,26 @@
+# VS Code config folders
 .vscode/**
 .vscode-test/**
+
+# Source files (TypeScript)
 src/**
-.gitignore
+**/*.ts
+**/*.map
+
+# Node/Yarn stuff
+node_modules/
 .yarnrc
+package-lock.json
+yarn.lock
+
+# Git and miscellaneous
+.gitignore
+.vscode-test.*
 vsc-extension-quickstart.md
+
+# TypeScript/ESLint configs
 **/tsconfig.json
 **/eslint.config.mjs
-**/*.map
-**/*.ts
-**/.vscode-test.*
+
+# Environment files
+.env

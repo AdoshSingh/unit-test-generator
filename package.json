@@ -13,12 +13,6 @@
     "url": "https://github.com/AdoshSingh/unit-test-generator.git"
   },
   "license": "MIT",
-  "files": [
-    "out/**",
-    "README.md",
-    "LICENSE.txt",
-    "changelog.md"
-  ],
   "categories": [
     "Other"
   ],
