@@ -1,6 +1,7 @@
 {
   "name": "unit-test-generator",
-  "displayName": "unit_test_generator",
+  "displayName": "Unit Tests Generator",
+  "publisher": "adoshsingh",
   "description": "",
   "version": "0.0.1",
   "type": "module",
@@ -39,8 +40,13 @@
         "unitTestGen.llmModel": {
           "type": "string",
           "default": "gpt-4",
-          "enum": ["gpt-4", "gpt-3.5-turbo"],
-          "enumDescriptions": ["OpenAI - GPT-4"],
+          "enum": [
+            "gpt-4",
+            "gpt-3.5-turbo"
+          ],
+          "enumDescriptions": [
+            "OpenAI - GPT-4"
+          ],
           "description": "LLM model version used to generate tests"
         },
         "unitTestGen.apiKey": {
@@ -71,8 +77,7 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@langchain/core": "^0.3.78",
-    "@langchain/openai": "^1.0.0",
-    "langchain": "^0.3.36"
+    "@langchain/core": "^1.0.1",
+    "@langchain/openai": "^1.0.0"
   }
 }
